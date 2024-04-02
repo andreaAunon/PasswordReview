@@ -1,6 +1,5 @@
 package es.babel.util;
 
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -36,8 +35,6 @@ class AuditTest {
         // GIVEN
         String password = "A";
         String resultExpected = "Muy debil";
-        // Notación when (sirve para dar comportamiento esperado):
-        //when(sut.auditPassword(password)).thenReturn(resultExpected);
         // WHEN
         String result = sut.auditPassword(password);
         // THEN
@@ -49,8 +46,28 @@ class AuditTest {
         // GIVEN
         String password = "Ab";
         String resultExpected = "Debil";
-        // Notación when (sirve para dar comportamiento esperado):
-        //when(sut.auditPassword(password)).thenReturn(resultExpected);
+        // WHEN
+        String result = sut.auditPassword(password);
+        // THEN
+        Assertions.assertEquals(resultExpected,result);
+    }
+
+    @Test
+    void test_shouldAuditPassword_whenHaveAllAndLongFour() {
+        // GIVEN
+        String password = "Ab*1";
+        String resultExpected = "Moderada";
+        // WHEN
+        String result = sut.auditPassword(password);
+        // THEN
+        Assertions.assertEquals(resultExpected,result);
+    }
+
+    @Test
+    void test_shouldAuditPassword_whenEmpty() {
+        // GIVEN
+        String password = "";
+        String resultExpected = "Contraseña vacia";
         // WHEN
         String result = sut.auditPassword(password);
         // THEN

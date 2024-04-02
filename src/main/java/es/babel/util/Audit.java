@@ -13,6 +13,10 @@ public class Audit {
     }
 
     public String auditPassword(String password){
+        if(password.equals("")){
+            return "Contraseña vacia";
+        }
+
         int puntuacion = review(password);
         comprobateUmbral(puntuacion);
 
