@@ -5,23 +5,21 @@ import es.babel.services.*;
 public class Audit {
 
     private static final int UMBRAL = 8;
-    private String password;
     private boolean isLessThanUmbral;
 
 
-    public Audit(String password){
-        this.password = password;
+    public Audit(){
         this.isLessThanUmbral = false;
     }
 
-    public String auditPassword(){
-        int puntuacion = review();
+    public String auditPassword(String password){
+        int puntuacion = review(password);
         comprobateUmbral(puntuacion);
 
         if(puntuacion > 0 && puntuacion <= 2){
-            return "Muy débil";
+            return "Muy debil";
         } else if(puntuacion > 2 && puntuacion <= 5) {
-            return "Débil";
+            return "Debil";
         } else if(puntuacion == 6 || puntuacion == 7) {
             return "Moderada";
         } else if(puntuacion == 8 || puntuacion == 9) {
@@ -41,7 +39,7 @@ public class Audit {
         }
     }
 
-    private int review(){
+    private int review(String password){
         ReviewGeneral reviewMethod = new ReviewGeneral();
 
         IReviewMethodInterface review1 = new ReviewLongitud();

@@ -39,8 +39,8 @@ public class Menu {
     }
 
     private String audit(String password){
-        this.audit = new Audit(password);
-        return audit.auditPassword();
+        this.audit = new Audit();
+        return audit.auditPassword(password);
     }
 
 }
