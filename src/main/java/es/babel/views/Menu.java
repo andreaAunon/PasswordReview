@@ -1,14 +1,16 @@
 package es.babel.views;
 
-import es.babel.util.controllers;
+import es.babel.controllers.Audit;
 
+import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Menu {
 
     private Scanner scanner;
-    private boolean isInSession;
-    private controllers audit;
+    private Audit audit;
 
     public Menu(){
         this.scanner = new Scanner(System.in);
@@ -19,6 +21,23 @@ public class Menu {
         String password = scanner.nextLine();
         String nivel = audit(password);
         comprobateUmbral(nivel);
+    }
+
+    public void readFile(String directoryPath){
+        Date currentDate = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy_MM_dd");
+        String formattedDate = dateFormat.format(currentDate);
+
+        String fileName = "password_" + formattedDate + ".txt";
+        String filePath = directoryPath + File.separator + fileName;
+
+        try (FileWriter writer = new FileWriter(filePath)) {
+            String password = "Ab*1";
+            String nivel = audit(password);
+            writer.write(password + " - " + nivel);
+        } catch (IOException e) {
+            System.err.println("Error al generar el archivo: " + e.getMessage());
+        }
     }
 
     private void comprobateUmbral(String nivel){
@@ -41,7 +60,7 @@ public class Menu {
     }
 
     private String audit(String password){
-        this.audit = new controllers();
+        this.audit = new Audit();
         return audit.auditPassword(password);
     }
 

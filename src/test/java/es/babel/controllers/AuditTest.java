@@ -1,4 +1,4 @@
-package es.babel.util;
+package es.babel.controllers;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -8,11 +8,11 @@ import org.mockito.Mock;
 class AuditTest {
 
     @Mock
-    private controllers sut;
+    private Audit sut;
 
     @BeforeEach
     public void setup() {
-        sut = new controllers();
+        sut = new Audit();
         // Para hacer un mock en caso de inyección de dependencias
         // Mockito.mock(.class)
     }

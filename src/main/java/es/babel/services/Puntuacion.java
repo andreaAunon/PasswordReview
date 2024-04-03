@@ -2,8 +2,7 @@ package es.babel.services;
 
 public class Puntuacion implements IPuntuacionInterface{
 
-    // Estaría mejor si se le pasa usando una lista las reviews pero
-    // sin Springboot en este caso no puedo hacerlo óptimamente
+
     @Override
     public int getPuntuacion(String password) {
         ReviewGeneral reviewMethod = new ReviewGeneral();

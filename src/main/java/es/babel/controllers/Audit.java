@@ -1,8 +1,13 @@
-package es.babel.util;
+package es.babel.controllers;
 
 import es.babel.services.*;
 
-public class controllers {
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class Audit {
 
     private static final int UMBRAL = 8;
     private boolean isLessThanUmbral;
@@ -12,7 +17,7 @@ public class controllers {
     private IPuntuacionInterface puntuacionInterface;
 
 
-    public controllers(){
+    public Audit(){
         this.isLessThanUmbral = false;
         this.puntuacionInterface = new Puntuacion();
     }
