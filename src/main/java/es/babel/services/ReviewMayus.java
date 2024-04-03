@@ -15,6 +15,7 @@ public class ReviewMayus implements IReviewMethodInterface{
      */
     @Override
     public int review(String password) {
+        // return password.matches("[A-Z]") ? 1 : 0;
         Pattern pattern = Pattern.compile("[A-Z]");
         Matcher matcher = pattern.matcher(password);
         if(matcher.find()){
