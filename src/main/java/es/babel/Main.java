@@ -1,6 +1,6 @@
 package es.babel;
 
-import es.babel.util.Menu;
+import es.babel.views.Menu;
 
 public class Main {
 

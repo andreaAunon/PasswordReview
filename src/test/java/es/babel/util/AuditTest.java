@@ -8,11 +8,11 @@ import org.mockito.Mock;
 class AuditTest {
 
     @Mock
-    private Audit sut;
+    private controllers sut;
 
     @BeforeEach
     public void setup() {
-        sut = new Audit();
+        sut = new controllers();
         // Para hacer un mock en caso de inyección de dependencias
         // Mockito.mock(.class)
     }
@@ -67,7 +67,7 @@ class AuditTest {
     void test_shouldAuditPassword_whenEmpty() {
         // GIVEN
         String password = "";
-        String resultExpected = "Contraseña vacia";
+        String resultExpected = "Hay alguna contraseña no valida";
         // WHEN
         String result = sut.auditPassword(password);
         // THEN

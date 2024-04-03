@@ -1,4 +1,6 @@
-package es.babel.util;
+package es.babel.views;
+
+import es.babel.util.controllers;
 
 import java.util.Scanner;
 
@@ -6,7 +8,7 @@ public class Menu {
 
     private Scanner scanner;
     private boolean isInSession;
-    private Audit audit;
+    private controllers audit;
 
     public Menu(){
         this.scanner = new Scanner(System.in);
@@ -39,7 +41,7 @@ public class Menu {
     }
 
     private String audit(String password){
-        this.audit = new Audit();
+        this.audit = new controllers();
         return audit.auditPassword(password);
     }
 
